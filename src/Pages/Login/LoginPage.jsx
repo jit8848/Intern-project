@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
+import { Link } from "react-router-dom";  // Import Link from react-router-dom
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -103,9 +104,10 @@ const Login = () => {
 
           <p className="text-center text-sm text-gray-600">
             Don't have an account?{" "}
-            <a href="#" className="text-green-600 hover:text-green-700 font-medium">
+            {/* Changed the anchor tag to Link component for navigation */}
+            <Link to="/signup" className="text-green-600 hover:text-green-700 font-medium">
               Sign up
-            </a>
+            </Link>
           </p>
         </form>
       </div>

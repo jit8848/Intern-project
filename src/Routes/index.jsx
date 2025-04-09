@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
-import SignupPage from "../Pages/Account/SignupPage";
+import LoginPage from "../Pages/Login/LoginPage";
+import SignupPage from "../Pages/Signup/SignupPage";
 import ProductsPage from "../Pages/Products/ProductsPage";
 import ProductDetailPage from "../Pages/Products/ProductDetailPage";
 import CartPage from "../Pages/Cart/CartPage";
@@ -15,8 +16,8 @@ export default function AppRoutes() {
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/account" element={<LoginPage />} /> */}
-          <Route path="/account" element={<SignupPage />} />
+          <Route path="/Login" element={<LoginPage />} />
+          <Route path="/Signup" element={<SignupPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:id" element={<ProductDetailPage />} />
           <Route path="/cart" element={<CartPage />} />
