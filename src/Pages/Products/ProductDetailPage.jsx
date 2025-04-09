@@ -1,25 +1,32 @@
-//productdetailpage
-
-"use client"
-
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import mockProducts from "../../Data/products.json" // Keep your existing data source
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import mockProducts from "../../Data/products.json";
+import { useCart } from "../Cart/CartContext"; // Import useCart hook
 
 export default function ProductDetailPage() {
-  const { id } = useParams()
-  const [product, setProduct] = useState(null)
-  const [quantity, setQuantity] = useState(1)
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart(); // Use the cart context
 
   useEffect(() => {
     // Keep your existing data fetching approach
-    const foundProduct = mockProducts.find((item) => item.id === Number.parseInt(id))
-    setProduct(foundProduct)
-  }, [id])
+    const foundProduct = mockProducts.find((item) => item.id === Number.parseInt(id));
+    setProduct(foundProduct);
+  }, [id]);
 
   if (!product) {
-    return <p className="text-center text-gray-600">Loading product...</p>
+    return <p className="text-center text-gray-600">Loading product...</p>;
   }
+
+  const handleAddToCart = () => {
+    // Add the selected product to the cart with the selected quantity
+    // The quantity state is already set by the +/- buttons
+    for (let i = 0; i < quantity; i++) {
+      addToCart(product);
+    }
+    // No navigation - stays on the product detail page
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -54,8 +61,9 @@ export default function ProductDetailPage() {
           {/* Rating */}
           <div className="flex items-center mt-2">
             <div className="flex text-yellow-400">
-              {/* Render 5 stars */}
-              {"★★★★★"}
+              {Array.from({ length: 5 }).map((_, index) => (
+                <span key={index}>★</span>
+              ))}
             </div>
             <span className="ml-2 text-gray-600">({product.reviews || 0} Reviews)</span>
           </div>
@@ -87,7 +95,12 @@ export default function ProductDetailPage() {
 
           {/* Buttons */}
           <div className="mt-6 flex gap-4">
-            <button className="bg-black text-white px-6 py-3 rounded-md font-medium">Add to Cart</button>
+            <button 
+              onClick={handleAddToCart}
+              className="bg-black text-white px-6 py-3 rounded-md font-medium"
+            >
+              Add to Cart
+            </button>
             <button className="border border-black px-6 py-3 rounded-md font-medium">Buy Now</button>
           </div>
 
@@ -99,7 +112,7 @@ export default function ProductDetailPage() {
             <h2 className="text-xl font-bold">Product Description</h2>
             <p className="text-gray-700 mt-2 text-sm leading-relaxed">{product.description}</p>
 
-            {/* Product Features - If your data has features, uncomment this */}
+            {/* Product Features - If your data has features */}
             {product.features && (
               <ul className="mt-4 space-y-2">
                 {product.features.map((feature, index) => (
@@ -133,6 +146,5 @@ export default function ProductDetailPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

@@ -22,7 +22,7 @@ const CartPage = () => {
           {cartItems.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-gray-600 mb-4">Your cart is empty</p>
-              <Link to="/products" className="bg-blue-500 text-white px-6 py-2 rounded-md">
+              <Link to="/products" className="bg-green-500 text-white px-6 py-2 rounded-md">
                 Continue Shopping
               </Link>
             </div>
@@ -39,7 +39,7 @@ const CartPage = () => {
                     <div>
                       <h3 className="font-semibold">{item.name}</h3>
                       <p className="text-gray-500 text-sm">Spices/Food</p>
-                      <p className="text-blue-600 font-bold">Rs {item.price}</p>
+                      <p className="text-green-600 font-bold">Rs {item.price}</p>
                     </div>
                   </div>
                   
@@ -91,7 +91,8 @@ const CartPage = () => {
           </div>
           <Link
             to="/checkout"
-            className="block w-full bg-blue-500 hover:bg-blue-600 text-white text-center py-3 rounded-md"
+            className="block w-full bg-black hover:bg-gray-800 text-white text-center py-3 rounded-md"
+
           >
             Proceed to Pay
           </Link>
@@ -100,3 +101,5 @@ const CartPage = () => {
     </div>
   );
 };
+
+export default CartPage;

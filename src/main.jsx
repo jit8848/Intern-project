@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { CartProvider } from "./Pages/Cart/CartContext"; 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter> {/* This should be at the top level */}
-      <App />
+    <BrowserRouter>
+      <CartProvider> 
+        <App />
+      </CartProvider>
     </BrowserRouter>
   </StrictMode>,
 );

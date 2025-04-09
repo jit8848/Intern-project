@@ -12,20 +12,20 @@ export const CartProvider = ({ children }) => {
       const existing = prev.find(item => item.id === product.id);
       if (existing) {
         const updated = prev.map(item => 
-          item.id === product.id ? {...item, quantity: item.quantity + 1} : item
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
-        setNotification({...product, action: 'updated'});
+        setNotification({ ...product, action: 'updated' });
         return updated;
       }
-      setNotification({...product, action: 'added'});
-      return [...prev, {...product, quantity: 1}];
+      setNotification({ ...product, action: 'added' });
+      return [...prev, { ...product, quantity: 1 }];
     });
   };
 
   const updateQuantity = (productId, newQuantity) => {
-    setCartItems(prev => 
-      prev.map(item => 
-        item.id === productId ? {...item, quantity: Math.max(1, newQuantity)} : item
+    setCartItems(prev =>
+      prev.map(item =>
+        item.id === productId ? { ...item, quantity: Math.max(1, newQuantity) } : item
       ).filter(item => item.quantity > 0)
     );
   };
@@ -53,4 +53,4 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-export const useCart = () => useContext(CartContext);x``
+export const useCart = () => useContext(CartContext);
