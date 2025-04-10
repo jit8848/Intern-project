@@ -20,7 +20,7 @@ const CartPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
         {/* Cart Items Section */}
         <div className="md:col-span-2 bg-[#f5f0e6] rounded-lg p-6">
           <div className="flex justify-between items-center mb-4">
@@ -96,7 +96,7 @@ const CartPage = () => {
         </div>
 
         {/* Order Summary */}
-        <div className="bg-[#f5f0e6] p-6 rounded-lg h-fit">
+        <div className="bg-[#f5f0e6] p-6 rounded-lg h-fit sm:mt-8 md:mt-0">
           <h2 className="text-xl font-bold mb-6">Order Summary</h2>
           <div className="space-y-4 mb-6">
             <div className="flex justify-between">
